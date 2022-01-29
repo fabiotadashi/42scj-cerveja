@@ -7,7 +7,9 @@ import com.fiap.cerveja.dto.CervejaDTO;
 import com.fiap.cerveja.dto.CervejaVencimentoDTO;
 import com.fiap.cerveja.entity.Cerveja;
 import com.fiap.cerveja.repository.CervejaRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -43,7 +45,8 @@ public class CervejaServiceImpl implements CervejaService {
 
     @Override
     public CervejaDTO getById(Long id) {
-        Cerveja cerveja = cervejaRepository.getById(id);
+        Cerveja cerveja = cervejaRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "cerveja.nao.encontrada"));
         return new CervejaDTO(cerveja);
     }
 
