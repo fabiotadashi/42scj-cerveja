@@ -20,8 +20,11 @@ import java.util.stream.Collectors;
 @RequestMapping("cervejas")
 public class CervejaController {
 
-    @Autowired
     private CervejaService cervejaService;
+
+    public CervejaController(CervejaService cervejaService){
+        this.cervejaService = cervejaService;
+    }
 
     @GetMapping
     public List<CervejaDTO> buscarCervejas(
