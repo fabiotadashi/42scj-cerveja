@@ -12,3 +12,6 @@ spring:
   h2:
     console:
       enabled: true # localhost:8081/h2-console
+  jpa:
+    hibernate:
+      ddl-auto: update # Remover quando implementar migrations

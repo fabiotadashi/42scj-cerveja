@@ -1,25 +1,27 @@
-package com.fiap.cerveja.dto;
+package com.fiap.cerveja.entity;
 
 import com.fiap.cerveja.domain.Tipo;
-import com.fiap.cerveja.entity.Cerveja;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
-public class CervejaDTO {
+@Entity
+@Table(name = "TB_CERVEJA")
+public class Cerveja {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private String nome;
+
+    @Column
+    @Enumerated(EnumType.STRING)
     private Tipo tipo;
+
+    @Column
     private LocalDate vencimento;
-
-    public CervejaDTO(){}
-
-    public CervejaDTO(Cerveja cerveja) {
-        this.id = cerveja.getId();
-        this.nome = cerveja.getNome();
-        this.tipo = cerveja.getTipo();
-        this.vencimento = cerveja.getVencimento();
-    }
 
     public Long getId() {
         return id;
