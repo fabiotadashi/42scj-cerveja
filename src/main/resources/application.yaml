@@ -15,3 +15,12 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
+#  security:
+#    user:
+#      name: fiap
+#      password: senha
+#      roles: ADMIN
+
+jwt:
+  secret: s3cr3t
+  expireInSeconds: 120
