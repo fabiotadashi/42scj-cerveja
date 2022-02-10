@@ -51,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic()
                 .and()
                 .authorizeRequests()
-//                .antMatchers(HttpMethod.POST, "/cervejas").hasRole("ADMIN")
+//                .antMatchers(HttpMethod.POST, "/cervejas").hasRole("GERENTE")
                 .antMatchers("/usuarios/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
