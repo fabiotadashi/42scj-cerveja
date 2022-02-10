@@ -23,4 +23,4 @@ spring:
 
 jwt:
   secret: s3cr3t
-  expireInSeconds: 120
+  expireInSeconds: 300

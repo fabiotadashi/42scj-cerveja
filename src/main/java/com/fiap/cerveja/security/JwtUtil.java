@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.Date;
 import java.util.HashMap;
@@ -21,8 +22,8 @@ public class JwtUtil {
     private int expireInSeconds;
 
     public String gerarToken(String usuario){
-        Date dataCriacao = Date.from(LocalDateTime.now().toInstant(ZoneOffset.UTC));
-        Date dataExpiracao = Date.from(LocalDateTime.now().plusSeconds(expireInSeconds).toInstant(ZoneOffset.UTC));
+        Date dataCriacao = Date.from(LocalDateTime.now().toInstant(OffsetDateTime.now().getOffset()));
+        Date dataExpiracao = Date.from(LocalDateTime.now().plusSeconds(expireInSeconds).toInstant(OffsetDateTime.now().getOffset()));
 
         Map<String, Object> claims = new HashMap<>(); // payload
         return Jwts.builder()
