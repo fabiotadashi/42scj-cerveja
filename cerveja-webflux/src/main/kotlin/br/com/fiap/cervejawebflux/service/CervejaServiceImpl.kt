@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service
 import org.springframework.web.server.ResponseStatusException
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
+import java.time.Duration
 
 @Service
 class CervejaServiceImpl(
@@ -22,7 +23,7 @@ class CervejaServiceImpl(
                 nome = it.nome,
                 tipo = it.tipo
             )
-        }
+        }.delayElements(Duration.ofSeconds(2))
 
     override fun create(cervejaCreateDTO: CervejaCreateDTO) = Mono.just(cervejaCreateDTO)
         .map { CervejaEntity(nome = it.nome, tipo = it.tipo) }

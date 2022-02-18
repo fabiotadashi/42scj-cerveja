@@ -14,7 +14,7 @@ class CervejaController(
     private val cervejaService: CervejaService
 ) {
 
-    @GetMapping(produces = [MediaType.APPLICATION_NDJSON_VALUE])
+    @GetMapping(produces = [MediaType.APPLICATION_STREAM_JSON_VALUE])
     fun findAll(): Flux<CervejaDTO> = cervejaService.findAll()
 
     @PostMapping
